@@ -66,6 +66,8 @@ open http://localhost:8080/{customer_id}
 
 ## ⚙️ Deployment 
 - Deploy it (the fastest way is to use [Clever-cloud](https://www.clever-cloud.com/doc/rust/rust/) thanks to their awesome native Rust support)
+- Set environment variables
+- Don't forget to add "RUSTUP_CHANNEL=nightly" env. variable for Rocket 
 - Done!
 
 > ## ❤️ Shameless plug
