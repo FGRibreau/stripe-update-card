@@ -15,10 +15,6 @@ extern crate serde;
 extern crate stripe;
 extern crate log;
 
-#[cfg(test)]
-mod tests;
-
-
 use rocket::Rocket;
 use rocket_contrib::Template;
 
