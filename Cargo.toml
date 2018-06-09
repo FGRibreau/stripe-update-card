@@ -10,6 +10,7 @@ description = "💳 Stripe update card page"
 keywords = ["stripe", "card", "payment"]
 categories = ["web-programming"]
 license = "MIT"
+include = ["src/**/*", "Cargo.toml","README.md","Rocket.toml", "templates/**/*"]
 
 
 [dependencies]

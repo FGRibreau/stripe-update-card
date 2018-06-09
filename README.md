@@ -1,5 +1,6 @@
-# stripe-update-card
+# Stripe Update Card microservice
 
+Expose a static page that let a customer update its credit card information on Stripe.
 
 [![Travis](https://img.shields.io/travis/FGRibreau/stripe-update-card.svg)](https://travis-ci.org/FGRibreau/stripe-update-card) [![codecov](https://codecov.io/gh/FGRibreau/stripe-update-card/branch/master/graph/badge.svg)](https://codecov.io/gh/FGRibreau/stripe-update-card)
 [![Cargo version](https://img.shields.io/crates/v/stripe-update-card.svg)](https://crates.io/crates/stripe-update-card) [![Crates.io](https://img.shields.io/crates/l/stripe-update-card.svg)](https://crates.io/crates/stripe-update-card) [![Crates.io](https://img.shields.io/crates/d/stripe-update-card.svg)](https://crates.io/crates/stripe-update-card)
@@ -8,12 +9,9 @@
   <img src="docs/screenshot.png"/>  
 </p>
 
-Expose a static page that let a customer update its credit card information on Stripe.
+## Configuration
 
-Features:
-- entirely customizable
-- delete `customer_id`current card and replace it with the new one
-
+Configuration is managed through environment variables, see [.env.dist](./.env.dist) for the full-list.
 
 
 ## ⛴ Setup
@@ -22,9 +20,6 @@ Features:
 cargo install stripe-update-card
 ```
 
-## Configuration
-
-Configuration is managed through environment variables, see [.env.dist](./.env.dist) for the full-list.
 
 ## 🤓 Self-documentation
 

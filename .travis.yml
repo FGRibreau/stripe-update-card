@@ -21,8 +21,8 @@ addons:
       - libiberty-dev
 
 script:
-  - docker run -e RUSTUP_HOME=/app/rustup -e CARGO_HOME=/app/cargo -v $(pwd):/app -w /app rust:latest rustup update nightly-2018-06-08
-  - docker run -e RUSTUP_HOME=/app/rustup -e CARGO_HOME=/app/cargo -v $(pwd):/app -w /app rust:latest rustup default nightly-2018-06-08
+  - docker run -e RUSTUP_HOME=/app/rustup -e CARGO_HOME=/app/cargo -v $(pwd):/app -w /app rust:latest rustup update
+  - docker run -e RUSTUP_HOME=/app/rustup -e CARGO_HOME=/app/cargo -v $(pwd):/app -w /app rust:latest rustup default nightly
   - docker run -e RUSTUP_HOME=/app/rustup -e CARGO_HOME=/app/cargo -v $(pwd):/app -w /app rust:latest cargo build
   - docker run -e RUSTUP_HOME=/app/rustup -e CARGO_HOME=/app/cargo -v $(pwd):/app -w /app rust:latest cargo test
 
