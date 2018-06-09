@@ -29,7 +29,18 @@ FORM_DATA_ALLOW_REMEMBER_ME=false
 FORM_DATA_LOCALE=auto
 ```
 
-## ⛴ Setup
+### 🐳 Docker container
+
+```bash
+docker run -it -e STRIPE_PUBLISHABLE_KEY=pk_test_xxx \
+ -e STRIPE_SECRET_KEY=sk_test_xxx \
+ -e SUCCESS_REDIRECT_URL=https://url.to.redirect/on/success \
+ fgribreau/stripe-update-card
+```
+
+See [stripe-update-card](https://hub.docker.com/r/fgribreau/stripe-update-card/) on docker hub.
+
+## ⛴ Cargo install
 
 ```bash
 cargo install stripe-update-card
@@ -88,3 +99,6 @@ This project use Travis-CI to run tests & do builds.
 Required environment variables are:
 
 - CODECOV_TOKEN (get one at https://codecov.io/gh/FGRibreau/ )
+- SUCCESS_REDIRECT_URL
+- STRIPE_SECRET_KEY
+- STRIPE_PUBLISHABLE_KEY
