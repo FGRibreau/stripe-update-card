@@ -14,6 +14,21 @@ Expose a static page that let a customer update its credit card information on S
 Configuration is managed through environment variables, see [.env.dist](./.env.dist) for the full-list.
 
 
+```bash
+STRIPE_PUBLISHABLE_KEY=pk_test_xxxxxxxx
+STRIPE_SECRET_KEY=sk_test_xxxx
+SUCCESS_REDIRECT_URL=https://url.to.redirect/on/success
+PAGE_TITLE="Update Card"
+FORM_DATA_IMAGE=/path/to/your/logo.png
+FORM_DATA_NAME="The name of your company or website"
+FORM_DATA_DESCRIPTION="A description of the product or service being purchased"
+FORM_DATA_PANEL_LABEL="Update Card Details"
+FORM_DATA_COLLECT_BILLING_ADDRESS=false
+FORM_DATA_LABEL="Update Card Details"
+FORM_DATA_ALLOW_REMEMBER_ME=false
+FORM_DATA_LOCALE=auto
+```
+
 ## ⛴ Setup
 
 ```bash
@@ -21,16 +36,17 @@ cargo install stripe-update-card
 ```
 
 
-## 🤓 Self-documentation
+## 🤓 Quick start
 
 Launch it, and enjoy!
 
 ```bash
 # load configurations (environment variables)
+cp .env.dist .env
 source .env
 # start server
 stripe-update-card &
-# open payment update cardwebpage
+# open payment update page
 open http://localhost:8080/{customer_id}
 ```
 
