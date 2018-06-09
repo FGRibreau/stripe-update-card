@@ -1,5 +1,4 @@
 #![feature(plugin, custom_derive, decl_macro)]
-#![feature(match_default_bindings)]
 #![plugin(rocket_codegen)]
 
 #[cfg(test)]
@@ -72,7 +71,7 @@ struct CardUpdate {
 
 
 #[post("/<customer_id>", data = "<card_update_form>")]
-fn updateCard(customer_id: String, card_update_form: LenientForm<CardUpdate>) -> Result<Redirect, stripe::Error> {
+fn update_card(customer_id: String, card_update_form: LenientForm<CardUpdate>) -> Result<Redirect, stripe::Error> {
     let card_update = card_update_form.get();
     let client = stripe::Client::new(env!("STRIPE_SECRET_KEY").to_string());
 
@@ -82,13 +81,13 @@ fn updateCard(customer_id: String, card_update_form: LenientForm<CardUpdate>) ->
     params.email = Some(&card_update.stripe_email);
     params.source = Some(stripe::CustomerSource::Token(&card_update.stripe_token));
 
-    stripe::Customer::update(&client, &customer_id, params).and_then(|ok| {
+    stripe::Customer::update(&client, &customer_id, params).and_then(|_customer| {
         Ok(Redirect::to(env!("SUCCESS_REDIRECT_URL")))
     })
 }
 
 fn rocket() -> Rocket {
-    rocket::ignite().attach(Template::fairing()).mount("/", routes![index, updateCard])
+    rocket::ignite().attach(Template::fairing()).mount("/", routes![index, update_card])
 }
 
 fn main() {
