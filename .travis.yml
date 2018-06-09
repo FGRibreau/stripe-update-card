@@ -22,10 +22,10 @@ addons:
 
 script:
   - printenv > /tmp/.env
-  - docker run -e RUSTUP_HOME=/app/rustup --env-file /tmp/.env -e CARGO_HOME=/app/cargo -v $(pwd):/app -w /app rust:latest rustup update
-  - docker run -e RUSTUP_HOME=/app/rustup --env-file /tmp/.env -e CARGO_HOME=/app/cargo -v $(pwd):/app -w /app rust:latest rustup default nightly
-  - docker run -e RUSTUP_HOME=/app/rustup --env-file /tmp/.env -e CARGO_HOME=/app/cargo -v $(pwd):/app -w /app rust:latest cargo build
-  - docker run -e RUSTUP_HOME=/app/rustup --env-file /tmp/.env -e CARGO_HOME=/app/cargo -v $(pwd):/app -w /app rust:latest cargo test
+  - docker run -e RUSTUP_HOME=/app/rustup -e STRIPE_PUBLISHABLE_KEY=test -e STRIPE_SECRET_KEY=test -e SUCCESS_REDIRECT_URL=http://google.com -e CARGO_HOME=/app/cargo -v $(pwd):/app -w /app rust:latest rustup update
+  - docker run -e RUSTUP_HOME=/app/rustup -e STRIPE_PUBLISHABLE_KEY=test -e STRIPE_SECRET_KEY=test -e SUCCESS_REDIRECT_URL=http://google.com -e CARGO_HOME=/app/cargo -v $(pwd):/app -w /app rust:latest rustup default nightly
+  - docker run -e RUSTUP_HOME=/app/rustup -e STRIPE_PUBLISHABLE_KEY=test -e STRIPE_SECRET_KEY=test -e SUCCESS_REDIRECT_URL=http://google.com -e CARGO_HOME=/app/cargo -v $(pwd):/app -w /app rust:latest cargo build
+  - docker run -e RUSTUP_HOME=/app/rustup -e STRIPE_PUBLISHABLE_KEY=test -e STRIPE_SECRET_KEY=test -e SUCCESS_REDIRECT_URL=http://google.com -e CARGO_HOME=/app/cargo -v $(pwd):/app -w /app rust:latest cargo test
 
 after_success: |
   wget https://github.com/SimonKagstrom/kcov/archive/master.tar.gz &&
