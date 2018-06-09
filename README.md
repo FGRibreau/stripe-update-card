@@ -31,13 +31,18 @@ FORM_DATA_ALLOW_REMEMBER_ME=false
 FORM_DATA_LOCALE=auto
 ```
 
-### 🐳 Docker container
+### 🐳 Docker container & Quick start
 
 ```bash
-docker run -it -e STRIPE_PUBLISHABLE_KEY=pk_test_xxx \
+docker run -it \
+ -e STRIPE_PUBLISHABLE_KEY=pk_test_xxx \
  -e STRIPE_SECRET_KEY=sk_test_xxx \
  -e SUCCESS_REDIRECT_URL=https://url.to.redirect/on/success \
+ -p 8080:8080 \
  fgribreau/stripe-update-card
+
+# open payment update page
+open http://localhost:8080/{customer_id}
 ```
 
 See [stripe-update-card](https://hub.docker.com/r/fgribreau/stripe-update-card/) on docker hub.
@@ -46,21 +51,6 @@ See [stripe-update-card](https://hub.docker.com/r/fgribreau/stripe-update-card/)
 
 ```bash
 cargo install stripe-update-card
-```
-
-
-## 🤓 Quick start
-
-Launch it, and enjoy!
-
-```bash
-# load configurations (environment variables)
-cp .env.dist .env
-source .env
-# start server
-stripe-update-card &
-# open payment update page
-open http://localhost:8080/{customer_id}
 ```
 
 
