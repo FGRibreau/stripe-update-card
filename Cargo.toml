@@ -1,0 +1,39 @@
+[package]
+name = "stripe-update-card"
+version = "1.0.0"
+authors = ["François-Guillaume RIBREAU <github@fgribreau.com>"]
+homepage = "https://github.com/FGRibreau/stripe-update-card"
+repository = "https://github.com/FGRibreau/stripe-update-card"
+readme = "README.md"
+documentation = "https://docs.rs/stripe-update-card"
+description = "💳 Stripe update card page"
+keywords = ["stripe", "card", "payment"]
+categories = ["web-programming"]
+license = "MIT"
+
+
+[dependencies]
+rocket = "0.3.12"
+rocket_codegen = "0.3.12"
+serde = "1.0"
+serde_json = "1.0"
+serde_derive = "1.0"
+lazy_static = "0.2"
+#stripe-rust = "0.4.5"
+#stripe-rust = { path = "/www/labs/stripe-rs" }
+stripe-rust = { git = "https://github.com/fgribreau/stripe-rs", branch = "master" }
+log = "0.4"
+
+[dependencies.rocket_contrib]
+version = "0.3.12"
+default-features = false # do not include the default features, and optionally
+                         # cherry-pick individual features
+features = ["json", "handlebars_templates"]
+
+
+[package.metadata.release]
+# cargo install cargo-release
+# cargo release --dry-run
+upload-doc = true
+pre-release-commit-message = "Release {{version}} 🎉🎉"
+pre-release-replacements = [ {file="README.md", search="Current release: [a-z0-9\\.-]+", replace="Current release: {{version}}"} , {file ="Cargo.toml", search="branch=\"[a-z0-9\\.-]+\"", replace="branch=\"{{version}}\""} ]

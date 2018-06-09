@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html >
+<head>
+    <meta charset="utf-8"/>
+    <title>MotionDynamic API documentation</title>
+
+    <title>{{ page_title }}</title>
+    <style>body{background: rgba(0,0,0,.6);}</style>
+    <script src="https://checkout.stripe.com/checkout.js"></script>
+    <script type="text/javascript">
+    function $(sel){return document.querySelector(sel);}
+
+    var isSending = false;
+    function sendForm(token){
+      isSending = true;
+      const form = $("#updateCard");
+      $("input[name=stripeToken]").value = token.id;
+      $("input[name=stripeEmail]").value = token.email;
+      form.submit();
+    }
+
+    // https://stripe.com/docs/checkout#integration-custom
+    var handler = StripeCheckout.configure({
+        key:"{{stripe_publishable_key}}",
+        image:"{{form_data_image}}",
+        name:"{{ form_data_name }}",
+        description:"{{ form_data_description }}",
+        panelLabel:"{{ form_data_panel_label }}",
+        label:"{{form_data_label}}",
+        allowRememberMe:{{form_data_allow_remember_me}},
+        locale:"{{form_data_locale}}",
+        closed: function(){
+         !isSending && setTimeout(function(){handler.open({});}, 100);
+        },
+        token: sendForm});
+    </script>
+</head>
+<body>
+<form id="updateCard" action="/{{customer_id}}" method="POST">
+    <input type="hidden" name="stripeToken" value=""/>
+    <input type="hidden" name="stripeEmail" value=""/>
+</form>
+<script>handler.open({});</script>
+</body>
+</html>
