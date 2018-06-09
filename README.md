@@ -1,13 +1,11 @@
 # stripe-update-card
 
 
-[![Travis](https://img.shields.io/travis/rust-lang/rust.svg)](https://travis-ci.org/FGRibreau/stripe-update-card) [![codecov](https://codecov.io/gh/FGRibreau/stripe-update-card/branch/master/graph/badge.svg)](https://codecov.io/gh/FGRibreau/stripe-update-card)
+[![Travis](https://img.shields.io/travis/FGRibreau/stripe-update-card.svg)](https://travis-ci.org/FGRibreau/stripe-update-card) [![codecov](https://codecov.io/gh/FGRibreau/stripe-update-card/branch/master/graph/badge.svg)](https://codecov.io/gh/FGRibreau/stripe-update-card)
 [![Cargo version](https://img.shields.io/crates/v/stripe-update-card.svg)](https://crates.io/crates/stripe-update-card) [![Crates.io](https://img.shields.io/crates/l/stripe-update-card.svg)](https://crates.io/crates/stripe-update-card) [![Crates.io](https://img.shields.io/crates/d/stripe-update-card.svg)](https://crates.io/crates/stripe-update-card)
 
 <p align="center">
-  <a href="/">
-  <img src="/"/>  
-  </a>
+  <img src="docs/screenshot.png"/>  
 </p>
 
 Expose a static page that let a customer update its credit card information on Stripe.
@@ -70,3 +68,12 @@ source .env
 # watch for changes and restart everytime
 RUST_LOG=debug cargo watch -x run 
 ```
+
+
+## CI
+
+This project use Travis-CI to run tests & do builds.
+
+Required environment variables are:
+
+- CODECOV_TOKEN (get one at https://codecov.io/gh/FGRibreau/ )
