@@ -11,6 +11,21 @@ Expose a static page that let a customer update its credit card information on S
   <img src="docs/screenshot.png"/>  
 </p>
 
+
+### 🐳 Getting started
+
+```bash
+docker run -it \
+ -e STRIPE_PUBLISHABLE_KEY=pk_test_xxx \
+ -e STRIPE_SECRET_KEY=sk_test_xxx \
+ -e SUCCESS_REDIRECT_URL=https://url.to.redirect/on/success \
+ -p 8080:8080 \
+ fgribreau/stripe-update-card
+
+# open payment update page for customer id: cus_D1Cj3rjHrjPQg5
+open http://localhost:8080/cus_XXXXXXXXXXXX
+```
+
 ## Configuration
 
 Configuration is managed through environment variables, see [.env.dist](./.env.dist) for the full-list.
@@ -32,20 +47,6 @@ FORM_DATA_COLLECT_BILLING_ADDRESS=false
 FORM_DATA_LABEL="Update Card Details"
 FORM_DATA_ALLOW_REMEMBER_ME=false
 FORM_DATA_LOCALE=auto
-```
-
-### 🐳 Docker container & Quick start
-
-```bash
-docker run -it \
- -e STRIPE_PUBLISHABLE_KEY=pk_test_xxx \
- -e STRIPE_SECRET_KEY=sk_test_xxx \
- -e SUCCESS_REDIRECT_URL=https://url.to.redirect/on/success \
- -p 8080:8080 \
- fgribreau/stripe-update-card
-
-# open payment update page
-open http://localhost:8080/{customer_id}
 ```
 
 See [stripe-update-card](https://hub.docker.com/r/fgribreau/stripe-update-card/) on docker hub.
