@@ -8,7 +8,7 @@ Expose a static page that let a customer update its credit card information on S
 <!-- [![codecov](https://codecov.io/gh/FGRibreau/stripe-update-card/branch/master/graph/badge.svg)](https://codecov.io/gh/FGRibreau/stripe-update-card) -->
 
 <p align="center">
-  <img src="docs/screencast.png"/>  
+  <img src="docs/screencast.gif"/>  
 </p>
 
 
@@ -50,6 +50,11 @@ FORM_DATA_LOCALE=auto
 ```
 
 See [stripe-update-card](https://hub.docker.com/r/fgribreau/stripe-update-card/) on docker hub.
+
+## Running in production at
+
+- [Image-Charts](https://payment.image-charts.com/cus_XXXXXX)
+- [Redsmin](https://payment.redsmin.com/cus_XXXXXX)
 
 ## ⛴ Cargo install
 
