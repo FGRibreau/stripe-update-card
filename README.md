@@ -32,6 +32,7 @@ FORM_DATA_COLLECT_BILLING_ADDRESS=false
 FORM_DATA_LABEL="Update Card Details"
 FORM_DATA_ALLOW_REMEMBER_ME=false
 FORM_DATA_LOCALE=auto
+ROCKET_PORT=8080
 ```
 
 ### 🐳 Docker container & Quick start
