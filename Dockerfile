@@ -26,7 +26,6 @@ ENV STRIPE_SECRET_KEY sk_test_xxxx
 ENV SUCCESS_REDIRECT_URL https://url.to.redirect/on/success
 
 # server settings
-ENV PORT 8080
 ENV ROCKET_ADDRESS 0.0.0.0
 
 CMD ["/app/bin/stripe-update-card"]
