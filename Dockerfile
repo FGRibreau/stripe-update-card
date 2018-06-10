@@ -27,6 +27,7 @@ ENV SUCCESS_REDIRECT_URL https://url.to.redirect/on/success
 
 # server settings
 ENV ROCKET_ADDRESS 0.0.0.0
+ENV ROCKET_PORT 8080
 
 EXPOSE 8080
 
