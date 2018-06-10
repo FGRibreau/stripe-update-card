@@ -1,6 +1,6 @@
 # Stripe Update Card microservice
 
-Expose a static page that let a customer update its credit card information on Stripe.
+Expose a page that let your customers update their payment information on Stripe.
 
 [![Travis](https://img.shields.io/travis/FGRibreau/stripe-update-card.svg)](https://travis-ci.org/FGRibreau/stripe-update-card)
 [![Cargo version](https://img.shields.io/crates/v/stripe-update-card.svg)](https://crates.io/crates/stripe-update-card) [![Crates.io](https://img.shields.io/crates/l/stripe-update-card.svg)](https://crates.io/crates/stripe-update-card) [![Crates.io](https://img.shields.io/crates/d/stripe-update-card.svg)](https://crates.io/crates/stripe-update-card) [![Docker Build Status](https://img.shields.io/docker/build/fgribreau/stripe-update-card.svg)](https://hub.docker.com/r/fgribreau/stripe-update-card/) [![MicroBadger Size](https://img.shields.io/microbadger/image-size/fgribreau/stripe-update-card.svg)](https://hub.docker.com/r/fgribreau/stripe-update-card/)
@@ -25,6 +25,8 @@ docker run -it \
 # open payment update page for customer id: cus_D1Cj3rjHrjPQg5
 open http://localhost:8080/cus_XXXXXXXXXXXX
 ```
+
+Don't forget to change `cus_XXXXXXXXXXXX` with the Stripe customer id and then expose the URL `http://sub.domain.tld/cus_XXXXXXXXXXXX` from your app.
 
 ## Configuration
 
