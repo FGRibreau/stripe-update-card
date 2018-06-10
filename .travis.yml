@@ -21,8 +21,7 @@ addons:
       - libiberty-dev
 
 script:
-  - docker run -e RUSTUP_HOME=/app/rustup -e CARGO_HOME=/app/cargo -v $(pwd):/app -w /app scorpil/rust:nightly cargo build
-  - docker run -e RUSTUP_HOME=/app/rustup -e CARGO_HOME=/app/cargo -v $(pwd):/app -w /app scorpil/rust:nightly cargo test
+  - docker build .
 
 after_success: |
   wget https://github.com/SimonKagstrom/kcov/archive/master.tar.gz &&
