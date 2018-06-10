@@ -17,9 +17,12 @@ Configuration is managed through environment variables, see [.env.dist](./.env.d
 
 
 ```bash
+# mandatory config
 STRIPE_PUBLISHABLE_KEY=pk_test_xxxxxxxx
 STRIPE_SECRET_KEY=sk_test_xxxx
 SUCCESS_REDIRECT_URL=https://url.to.redirect/on/success
+
+# optional config
 PAGE_TITLE="Update Card"
 FORM_DATA_IMAGE=/path/to/your/logo.png
 FORM_DATA_NAME="The name of your company or website"
@@ -93,6 +96,3 @@ This project use Travis-CI to run tests & do builds.
 Required environment variables are:
 
 - CODECOV_TOKEN (get one at https://codecov.io/gh/FGRibreau/ )
-- SUCCESS_REDIRECT_URL
-- STRIPE_SECRET_KEY
-- STRIPE_PUBLISHABLE_KEY

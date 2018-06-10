@@ -46,7 +46,7 @@ fn env(key: &str) -> String {
 fn index(customer_id: String) -> Template {
     let context = TemplateContext {
         page_title: env("PAGE_TITLE"),
-        stripe_publishable_key: env!("STRIPE_PUBLISHABLE_KEY").to_string(),
+        stripe_publishable_key: env("STRIPE_PUBLISHABLE_KEY"),
         form_data_name: env("FORM_DATA_NAME"),
         form_data_description: env("FORM_DATA_DESCRIPTION"),
         form_data_image: env("FORM_DATA_IMAGE"),
@@ -73,7 +73,7 @@ struct CardUpdate {
 #[post("/<customer_id>", data = "<card_update_form>")]
 fn update_card(customer_id: String, card_update_form: LenientForm<CardUpdate>) -> Result<Redirect, stripe::Error> {
     let card_update = card_update_form.get();
-    let client = stripe::Client::new(env!("STRIPE_SECRET_KEY").to_string());
+    let client = stripe::Client::new(env("STRIPE_SECRET_KEY"));
 
 
     // https://github.com/rapiditynetworks/stripe-rs
@@ -82,7 +82,7 @@ fn update_card(customer_id: String, card_update_form: LenientForm<CardUpdate>) -
     params.source = Some(stripe::CustomerSource::Token(&card_update.stripe_token));
 
     stripe::Customer::update(&client, &customer_id, params).and_then(|_customer| {
-        Ok(Redirect::to(env!("SUCCESS_REDIRECT_URL")))
+        Ok(Redirect::to(&env("SUCCESS_REDIRECT_URL")))
     })
 }
 
