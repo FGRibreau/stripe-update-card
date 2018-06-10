@@ -1,4 +1,4 @@
-FROM scorpil/rust:1.28-onbuild
+FROM scorpil/rust:nightly-onbuild
 MAINTAINER Francois-Guillaume Ribreau <docker@fgribreau.com>
 
 ENV STRIPE_PUBLISHABLE_KEY pk_test_xxxxxxxx
