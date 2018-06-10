@@ -3,7 +3,7 @@
 Expose a static page that let a customer update its credit card information on Stripe.
 
 [![Travis](https://img.shields.io/travis/FGRibreau/stripe-update-card.svg)](https://travis-ci.org/FGRibreau/stripe-update-card) [![codecov](https://codecov.io/gh/FGRibreau/stripe-update-card/branch/master/graph/badge.svg)](https://codecov.io/gh/FGRibreau/stripe-update-card)
-[![Cargo version](https://img.shields.io/crates/v/stripe-update-card.svg)](https://crates.io/crates/stripe-update-card) [![Crates.io](https://img.shields.io/crates/l/stripe-update-card.svg)](https://crates.io/crates/stripe-update-card) [![Crates.io](https://img.shields.io/crates/d/stripe-update-card.svg)](https://crates.io/crates/stripe-update-card) ![Docker Build Status](https://img.shields.io/docker/build/fgribreau/stripe-update-card.svg) ![MicroBadger Size](https://img.shields.io/microbadger/image-size/fgribreau/stripe-update-card.svg)
+[![Cargo version](https://img.shields.io/crates/v/stripe-update-card.svg)](https://crates.io/crates/stripe-update-card) [![Crates.io](https://img.shields.io/crates/l/stripe-update-card.svg)](https://crates.io/crates/stripe-update-card) [![Crates.io](https://img.shields.io/crates/d/stripe-update-card.svg)](https://crates.io/crates/stripe-update-card) [![Docker Build Status](https://img.shields.io/docker/build/fgribreau/stripe-update-card.svg)](https://hub.docker.com/r/fgribreau/stripe-update-card/) [![MicroBadger Size](https://img.shields.io/microbadger/image-size/fgribreau/stripe-update-card.svg)](https://hub.docker.com/r/fgribreau/stripe-update-card/)
 
 
 
