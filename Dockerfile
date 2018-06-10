@@ -9,7 +9,8 @@ RUN \
     rustc --version && \
     mkdir -m 755 bin && \
     cargo build --release && \
-    cp /app/target/release/stripe-update-card /app/bin
+    cp /app/target/release/stripe-update-card /app/bin && \
+    cp /app/templates /app/bin
 
 
 FROM debian:stretch-slim
@@ -28,6 +29,7 @@ ENV SUCCESS_REDIRECT_URL https://url.to.redirect/on/success
 # server settings
 ENV ROCKET_ADDRESS 0.0.0.0
 ENV ROCKET_PORT 8080
+ENV ROCKET_ENV production
 
 EXPOSE 8080
 
