@@ -19,7 +19,6 @@ MAINTAINER Francois-Guillaume Ribreau <docker@fgribreau.com>
 COPY --from=builder /app/bin /app/bin
 
 WORKDIR /app
-USER app
 
 # mandatory settings
 ENV STRIPE_PUBLISHABLE_KEY pk_test_xxxxxxxx
