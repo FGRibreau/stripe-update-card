@@ -28,4 +28,6 @@ ENV SUCCESS_REDIRECT_URL https://url.to.redirect/on/success
 # server settings
 ENV ROCKET_ADDRESS 0.0.0.0
 
+EXPOSE 8080
+
 CMD ["/app/bin/stripe-update-card"]
