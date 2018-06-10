@@ -10,6 +10,7 @@ RUN \
     mkdir -m 755 bin && \
     cargo build --release && \
     cp /app/target/release/stripe-update-card /app/bin && \
+    cp -v /app/Rocket.toml /app/bin && \
     cp -R -v /app/templates /app/bin
 
 
@@ -19,7 +20,7 @@ MAINTAINER Francois-Guillaume Ribreau <docker@fgribreau.com>
 
 COPY --from=builder /app/bin /app/bin
 
-WORKDIR /app
+WORKDIR /app/bin
 
 # mandatory settings
 ENV STRIPE_PUBLISHABLE_KEY pk_test_xxxxxxxx
@@ -33,4 +34,4 @@ ENV ROCKET_ENV production
 
 EXPOSE 8080
 
-CMD ["/app/bin/stripe-update-card"]
+CMD ["./stripe-update-card"]
