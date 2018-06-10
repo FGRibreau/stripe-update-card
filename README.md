@@ -8,7 +8,7 @@ Expose a static page that let a customer update its credit card information on S
 <!-- [![codecov](https://codecov.io/gh/FGRibreau/stripe-update-card/branch/master/graph/badge.svg)](https://codecov.io/gh/FGRibreau/stripe-update-card) -->
 
 <p align="center">
-  <img src="docs/screenshot.png"/>  
+  <img src="docs/screencast.png"/>  
 </p>
 
 
@@ -59,10 +59,12 @@ cargo install stripe-update-card
 
 
 ## ⚙️ Deployment 
+
 - Deploy it (the fastest way is to use [Clever-cloud](https://www.clever-cloud.com/doc/rust/rust/) thanks to their awesome native Rust support)
 - Set environment variables
 - Don't forget to add "RUSTUP_CHANNEL=nightly" env. variable for Rocket 
 - Done!
+
 
 > ## ❤️ Shameless plug
 > - [**Charts, simple as a URL**. No more server-side rendering pain, 1 url = 1 chart](https://image-charts.com)
@@ -88,6 +90,9 @@ source .env
 # watch for changes and restart everytime
 RUST_LOG=debug cargo watch -x run 
 ```
+
+- Use Stripe test tokens
+- Use credit card number `4242 4242 4242 4242` and any date & CVV
 
 
 ## CI
