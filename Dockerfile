@@ -9,7 +9,7 @@ RUN \
     rustc --version && \
     mkdir -m 755 bin && \
     cargo build --release && \
-    cp /app/target/release/service /app/bin
+    cp /app/target/release/stripe-update-card /app/bin
 
 
 FROM debian:stretch-slim
