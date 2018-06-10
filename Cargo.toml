@@ -30,11 +30,3 @@ version = "0.3.12"
 default-features = false # do not include the default features, and optionally
                          # cherry-pick individual features
 features = ["json", "handlebars_templates"]
-
-
-[package.metadata.release]
-# cargo install cargo-release
-# cargo release --dry-run
-upload-doc = true
-pre-release-commit-message = "Release {{version}} 🎉🎉"
-pre-release-replacements = [ {file="README.md", search="Current release: [a-z0-9\\.-]+", replace="Current release: {{version}}"} , {file ="Cargo.toml", search="branch=\"[a-z0-9\\.-]+\"", replace="branch=\"{{version}}\""} ]
