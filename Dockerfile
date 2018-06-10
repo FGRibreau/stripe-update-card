@@ -10,7 +10,7 @@ RUN \
     mkdir -m 755 bin && \
     cargo build --release && \
     cp /app/target/release/stripe-update-card /app/bin && \
-    cp /app/templates /app/bin
+    cp -R -v /app/templates /app/bin
 
 
 FROM debian:stretch-slim
