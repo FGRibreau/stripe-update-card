@@ -2,8 +2,9 @@ FROM rust:1.26.0-stretch as builder
 ADD . /app
 WORKDIR /app
 # Make sure that this matches in .travis.yml
-ARG RUST_TOOLCHAIN=nightly
+ARG RUST_TOOLCHAIN=nightly-2018-06-09
 RUN \
+    rustup install ${RUST_TOOLCHAIN} && \
     rustup default ${RUST_TOOLCHAIN} && \
     cargo --version && \
     rustc --version && \
