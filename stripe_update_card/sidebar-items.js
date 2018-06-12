@@ -1,0 +1,1 @@
+initSidebarItems({"static":[["static_rocket_route_info_for_index","Rocket code generated static route information structure."],["static_rocket_route_info_for_update_card","Rocket code generated static route information structure."]]});
