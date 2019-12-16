@@ -26,7 +26,7 @@ stripe-rust = "0.4.7"
 log = "0.4"
 
 [dependencies.rocket_contrib]
-version = "0.3.12"
+version = "0.4.2"
 default-features = false # do not include the default features, and optionally
                          # cherry-pick individual features
 features = ["json", "handlebars_templates"]
