@@ -20,7 +20,7 @@ serde = "1.0"
 serde_json = "1.0"
 serde_derive = "1.0"
 lazy_static = "0.2"
-stripe-rust = "0.4.7"
+stripe-rust = "0.11.0"
 #stripe-rust = { path = "/www/labs/stripe-rs" }
 #stripe-rust = { git = "https://github.com/fgribreau/stripe-rs", branch = "master" }
 log = "0.4"
