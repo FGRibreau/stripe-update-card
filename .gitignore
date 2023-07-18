@@ -3,3 +3,4 @@ target
 rustup
 cargo
 .env
+.envrc
