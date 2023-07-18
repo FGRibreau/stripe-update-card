@@ -1,7 +1,3 @@
-#[cfg(test)]
-#[macro_use]
-extern crate lazy_static;
-
 #[macro_use]
 extern crate serde_derive;
 extern crate log;
@@ -11,15 +7,15 @@ extern crate stripe;
 
 use std::env;
 
-use actix_web::{get, post, App, HttpResponse, HttpServer, Responder, web, HttpRequest, http};
+use actix_web::{get, post, App, HttpResponse, HttpServer, web};
 use actix_web::body::BoxBody;
 use actix_web::dev::ServiceResponse;
 use actix_web::http::header::ContentType;
-use actix_web::http::{header, StatusCode};
+use actix_web::http::{StatusCode};
 use actix_web::middleware::{ErrorHandlerResponse, ErrorHandlers};
-use actix_web::web::Redirect;
+
 use actix_web::Result;
-use http::header::LOCATION;
+
 use log::error;
 use serde_json::json;
 use stripe::TokenId;
@@ -30,7 +26,7 @@ fn env(key: &str) -> String {
 }
 
 #[get("/{customer_id}")]
-async fn index(hb: web::Data<Handlebars<'_>>, path: web::Path<(String)>) -> HttpResponse {
+async fn index(hb: web::Data<Handlebars<'_>>, path: web::Path<String>) -> HttpResponse {
 
     let customer_id = path.into_inner();
 
@@ -64,7 +60,7 @@ struct CardUpdate {
 
 
 #[post("/{customer_id}")]
-async fn update_card(path: web::Path<(String)>, card_update_form: web::Form<CardUpdate> ) -> HttpResponse {
+async fn update_card(path: web::Path<String>, card_update_form: web::Form<CardUpdate> ) -> HttpResponse {
     let customer_id = path.into_inner();
 
     let client = stripe::Client::new(env("STRIPE_SECRET_KEY"));
