@@ -23,3 +23,4 @@ lazy_static = "1.4.0"
 log = "0.4.19"
 async-stripe = { version = "0.22.2", features = ["runtime-tokio-hyper"] }
 handlebars = { version = "4.2.1", features = ["dir_source"] }
+env_logger = "0.10.0"

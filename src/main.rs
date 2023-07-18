@@ -1,6 +1,8 @@
 #[macro_use]
-extern crate serde_derive;
 extern crate log;
+
+#[macro_use]
+extern crate serde_derive;
 extern crate serde;
 extern crate serde_json;
 extern crate stripe;
@@ -10,15 +12,15 @@ use std::env;
 use actix_web::{get, post, App, HttpResponse, HttpServer, web};
 use actix_web::body::BoxBody;
 use actix_web::dev::ServiceResponse;
-use actix_web::http::header::ContentType;
+use actix_web::http::header::{ContentType, LOCATION};
 use actix_web::http::{StatusCode};
 use actix_web::middleware::{ErrorHandlerResponse, ErrorHandlers};
 
 use actix_web::Result;
 
-use log::error;
+use log::{error, info};
 use serde_json::json;
-use stripe::TokenId;
+use stripe::{TokenId};
 use handlebars::Handlebars;
 
 fn env(key: &str) -> String {
@@ -65,25 +67,36 @@ async fn update_card(path: web::Path<String>, card_update_form: web::Form<CardUp
 
     let client = stripe::Client::new(env("STRIPE_SECRET_KEY"));
 
-    // https://github.com/rapiditynetworks/stripe-rs
     let mut params = stripe::UpdateCustomer::default();
     params.email = Some(&card_update_form.stripe_email);
-    params.source = Some(stripe::PaymentSourceParams::Token(card_update_form.stripe_token.parse::<TokenId>().unwrap_or_default()));
+
+    let card_token = card_update_form.stripe_token.parse::<TokenId>();
+
+    if let Err(err) = card_token {
+        error!("Could not parse card_token from customer_id={} err={:?}", customer_id, err);
+        return HttpResponse::BadRequest().json(json!({
+            "error" : "Invalid card token"
+        }));
+    }
+
+    params.source = Some(stripe::PaymentSourceParams::Token(card_token.unwrap()));
 
     let res = stripe::Customer::update(&client, &customer_id.parse::<stripe::CustomerId>().unwrap_or_default(), params)
         .await;
 
-    if let Err(error) = res{
-        error!("Could not update customer customer_id={} response={:?}", customer_id, error);
-        return HttpResponse::InternalServerError().finish();
-    }
 
-    HttpResponse::Ok().finish()
-        /*.and_then(|_customer| {
-        Ok(HttpResponse::Found()
-            .insert_header((LOCATION, env("SUCCESS_REDIRECT_URL")))
-            .finish())
-    })*/
+    match res {
+        Ok(customer) => {
+            info!("Updated credit card for customer_id={} email={:?}", customer_id, customer.email);
+            HttpResponse::Found()
+                .insert_header((LOCATION, env("SUCCESS_REDIRECT_URL")))
+                .finish()
+        }
+        Err(error) => {
+            error!("Could not update customer customer_id={} response={:?}", customer_id, error);
+            HttpResponse::InternalServerError().finish()
+        }
+    }
 }
 
 // Custom error handlers, to return HTML responses when an error occurs.
@@ -136,6 +149,8 @@ fn get_error_response<B>(res: &ServiceResponse<B>, error: &str) -> HttpResponse<
 
 #[actix_web::main]
 async fn main() -> std::io::Result<()> {
+    env_logger::init();
+
     // Handlebars uses a repository for the compiled templates. This object must be
     // shared between the application threads, and is therefore passed to the
     // Application Builder as an atomic reference-counted pointer.
@@ -145,6 +160,7 @@ async fn main() -> std::io::Result<()> {
         .unwrap();
     let handlebars_ref = web::Data::new(handlebars);
 
+    info!("Starting server on 0.0.0.0:8080");
     HttpServer::new(move || {
         App::new().wrap(error_handlers()).app_data(handlebars_ref.clone())
             .service(index)
