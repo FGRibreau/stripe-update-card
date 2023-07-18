@@ -1,12 +1,8 @@
 FROM rust:1.71-slim-bullseye as builder
 ADD . /app
 WORKDIR /app
-# Make sure that this matches in .travis.yml
-ARG RUST_TOOLCHAIN=1.71.0
-RUN \
-    rustup install ${RUST_TOOLCHAIN} && \
-    rustup default ${RUST_TOOLCHAIN} && \
-    cargo --version && \
+
+RUN cargo --version && \
     rustc --version && \
     mkdir -m 755 bin && \
     cargo build --release && \
