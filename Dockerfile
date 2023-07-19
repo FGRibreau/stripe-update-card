@@ -2,7 +2,8 @@ FROM rust:1.71-slim-bullseye as builder
 ADD . /app
 WORKDIR /app
 
-RUN cargo --version && \
+RUN apt-get update && apt-get install -y pkg-config libssl-dev && \
+    cargo --version && \
     rustc --version && \
     mkdir -m 755 bin && \
     cargo build --release && \
